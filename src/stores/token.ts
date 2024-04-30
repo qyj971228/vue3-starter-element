@@ -13,9 +13,9 @@ export const useTokenStore = defineStore('token', () => {
     }
     return token.value
   }
-  async function set(username: string, password: string) {
-    // TODO: get token
+  async function set({ username, password }: { username: string; password: string }) {
     // const { data } = await reqLoginApi({ username, password })
+    // TODO: handle token
     token.value = '123'
     localStorage.setItem('token', '123')
   }

@@ -31,7 +31,7 @@ watch(
 )
 
 const isShowNavAndHeader = computed(() => {
-  return getToken() && router.currentRoute.value.path !== '/dashboard'
+  return getToken() && !['/dashboard', '/login'].includes(router.currentRoute.value.path)
 })
 
 // menu-item
@@ -52,9 +52,13 @@ function getMenuConfig(val: RouteRecordRaw[]): MenuItemProp[] {
 <template>
   <!-- header -->
   <header v-if="isShowNavAndHeader" class="flex shadow bg-#209F84" :style="{ height: headerHeight + 'px' }">
-    <div class="flex flex-items-center" :style="{ height: headerHeight + 'px' }">
+    <div
+      class="flex flex-items-center cursor-pointer"
+      @click="router.push('/dashboard')"
+      :style="{ height: headerHeight + 'px' }"
+    >
       <img class="w-150px h-60px object-contain" :src="Logo" alt="icon" />
-      <div class="title" @click="router.push('/dashboard')">VUE_STARTER_ELEMENT</div>
+      <div class="title">VUE_STARTER_ELEMENT</div>
     </div>
     <div class="ml-a flex flex-items-center gap-20px" :style="{ height: headerHeight + 'px' }">
       <div class="time cursor-default">{{ currentTime }}</div>
