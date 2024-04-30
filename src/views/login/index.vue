@@ -47,12 +47,13 @@ function onHandleLogin() {
 }
 </script>
 <template>
-  <div class="login-container relative">
-    <img :src="BG" class="w-100% h-100% object-contain absolute left-0 top-0 z--2" />
-    <img :src="Wave" class="w-100% h-40% object-fill absolute left-0 bottom-0 z--1" />
-    <el-card class="w-825px h-512px" shadow="always" :body-style="{ padding: '76px 65px 95px 65px' }">
-      <div class="flex">
-        <div class="w-294px flex flex-col justify-center mr-70px">
+  <img :src="BG" class="w-100% h-100% object-contain fixed left-0 top-0 z--2" />
+  <img :src="Wave" class="w-100% h-40% object-fill fixed left-0 bottom-0 z--1" />
+  <div class="h-100vh w-100vw flex flex-justify-center flex-items-center hidden">
+    <el-card class="w-825px" shadow="always" :body-style="{ padding: '76px 65px' }">
+      <div class="flex flex-items-center gap-50px">
+        <img :src="Login" class="w-332px h-332px" />
+        <div class="min-w-200px w-300px flex flex-col">
           <div class="text-center text-18px font-bold mb-42px">VUE_STARTER_ELEMENT</div>
           <el-form ref="loginFormRef" :model="loginFormData" :rules="loginFormRules" @keyup.enter="onHandleLogin">
             <el-form-item prop="username">
@@ -77,21 +78,7 @@ function onHandleLogin() {
             <el-button class="w-100%" :loading="loading" type="primary" @click.prevent="onHandleLogin">登 录</el-button>
           </el-form>
         </div>
-        <div>
-          <img :src="Login" class="w-332px h-332px" />
-        </div>
       </div>
     </el-card>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%vw;
-  min-height: 100%;
-  overflow: hidden;
-}
-</style>
